@@ -5,12 +5,23 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public class TestThis {
+
+	/**
+	 * 注解类 进行解析注解类
+	 * 
+	 * @throws Exception
+	 */
 	public void classAnnotationTest() throws Exception {
 		Class<?> oneclass = Class.forName(OneClass.class.getName());
 		ClassAnnotation classAnnotation = oneclass.getAnnotation(ClassAnnotation.class);
 		System.out.println(classAnnotation.name());
 	}
 
+	/**
+	 * 注解方法 注解方法参数 进行注解解析
+	 * 
+	 * @throws Exception
+	 */
 	public void methodAnnotationTest() throws Exception {
 		Class<?> oneclass = Class.forName(OneClass.class.getName());
 		ClassAnnotation classAnnotation = oneclass.getAnnotation(ClassAnnotation.class);
@@ -30,6 +41,11 @@ public class TestThis {
 		System.out.println(oneAnnotation.parameter2());
 	}
 
+	/**
+	 * 注解参数 进行解析
+	 * 
+	 * @throws Exception
+	 */
 	public void fieldAnnotationTest() throws Exception {
 		Class<?> oneclass = Class.forName(OneClass.class.getName());
 		OneClass oneClassModel = (OneClass) oneclass.newInstance();
@@ -46,6 +62,6 @@ public class TestThis {
 	}
 
 	public static void main(String[] args) throws Exception {
-
+		// fieldAnnotationTest();
 	}
 }
