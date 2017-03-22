@@ -39,7 +39,10 @@ public class TestThis {
 		field.set(oneClassModel, "name==name");
 		oneFieldAnnotation oneField = field.getAnnotation(oneFieldAnnotation.class);
 		String name = (String) field.get(oneClassModel);
-		System.out.println("name" + name + "   " + oneField.name());
+		if (oneField.nameString()) {
+			System.out.println("姓名需要使用 string 字段");
+		}
+		System.out.println("name" + name + "   " + oneField.nameString());
 	}
 
 	public static void main(String[] args) throws Exception {

@@ -2,7 +2,7 @@ package demo.annotation;
 
 @ClassAnnotation(name = "liqingjudeclass")
 public class OneClass {
-	@oneFieldAnnotation(name = "liqingju")
+	@oneFieldAnnotation(nameString = true)
 	public String name;
 
 	@oneMethodAnnotation(parameter1 = "YES", parameter2 = 10000)

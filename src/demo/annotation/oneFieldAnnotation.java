@@ -9,8 +9,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface oneFieldAnnotation {
 
-	public String name() default "";
+	public boolean nameString() default false;
 
-	public int age() default -1;
+	public int ageInt() default -1;
+
+	// 使用枚举类型 设置注解值
+	public Color blu() default Color.BOOL;
 
 }
