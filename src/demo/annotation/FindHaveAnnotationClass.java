@@ -23,10 +23,14 @@ public class FindHaveAnnotationClass extends ClassLoader {
 				File files = new File(url.getPath());
 				File[] allClass = files.listFiles();
 				for (int i = 0; i < allClass.length; i++) {
+					String className = allClass[i].getName();
+
+					// allClass[i].getAbsolutePath();
 					if (!allClass[i].isDirectory()) {
-						String className = allClass[i].getName();
+
 						// System.out.println(className);
 						try {
+							// System.out.println(classPath);
 							Class<?> clazz = Class.forName(String.format("%s.%s", classPath.replaceAll("/", "."),
 									className.substring(0, className.indexOf("."))));
 							ClassAnnotation classAnnotation = (ClassAnnotation) clazz.getAnnotation(clazzAnnotation);
@@ -36,6 +40,11 @@ public class FindHaveAnnotationClass extends ClassLoader {
 						} catch (ClassNotFoundException e) {
 							e.printStackTrace();
 						}
+					} else {
+						String filePath = allClass[i].getPath();
+						// 获取到相对地址 递归扫描
+						filePath = filePath.substring(filePath.lastIndexOf(classPath), filePath.length());
+						findClass(filePath, clazzAnnotation);
 					}
 
 				}
